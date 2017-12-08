@@ -50,7 +50,6 @@ public:
             char s[5];
             uint m = move_hist[i];
             decode_move(m, s);
-            cout << s << endl;
             cout << "i=" << i << "  " << s << endl;
         }
     }
@@ -72,8 +71,10 @@ public:
         uint to = (m >> 8) & 255;
 
         s[0] = from / 10 + 'a';
-        s[1] = from % 10 + 1;
-        s[2] = 0;
+        s[1] = from % 10 + '0';
+        s[2] = to / 10 + 'a';
+        s[3] = to % 10 + '0';
+        s[5] = 0;
     }
 
     void clone(int (&a)[80]) {
@@ -295,7 +296,6 @@ public:
                         }
                     }
                         break;
-
                 }
 
             }
@@ -362,5 +362,6 @@ int main(int argc, char** argv)
     //cout << mv[1] << endl;
 
     board.print_history();
+
     return 0;
 }
